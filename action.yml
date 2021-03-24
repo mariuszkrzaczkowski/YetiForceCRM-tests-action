@@ -1,0 +1,16 @@
+name: 'YetiForceCRM Tests Action'
+description: 'GitHub Action for Tests YetiForceCRM'
+branding:
+  icon: 'check-square'
+  color: 'blue'
+inputs:
+  php:
+    description: 'PHP version'
+    required: true
+    default: '7.4'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.php }}
