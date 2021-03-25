@@ -27,6 +27,12 @@ chown -R www-data:www-data /var/www/
 php /var/www/html/tests/setup/docker_post_install.php
 
 service mysql start;
+service cron start
+/usr/sbin/nginx -g "daemon off;" &
+/etc/init.d/php$INPUT_PHP-fpm start
+/usr/bin/mysqld_safe
+
+
 mysql -uroot mysql;
 mysqladmin password "$DB_ROOT_PASS";
 echo "UPDATE mysql.user SET Password=PASSWORD('$DB_ROOT_PASS') WHERE User='root';" | mysql --user=root;
