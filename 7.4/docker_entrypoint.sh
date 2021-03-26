@@ -24,9 +24,6 @@ rm /var/www/html/public_html/.user.ini
 echo " -----  chmod  -----"
 chmod -R +x /var/www/html/tests/setup
 
-echo " -----  tests/setup/docker_entrypoint.sh  -----"
-/var/www/html/tests/setup/docker_entrypoint.sh
-
 echo " -----  tests/setup/dependency.sh  -----"
 /var/www/html/tests/setup/dependency.sh
 
@@ -41,9 +38,11 @@ service mysql start;
 echo " -----  service cron start  -----"
 service cron start
 echo " -----  nginx  -----"
-/usr/sbin/nginx -g "daemon off;" &
+/usr/sbin/nginx -g "daemon off;"
+echo " -----  PHP-FPM  -----"
 /etc/init.d/php$PHP_VER-fpm start
-/usr/bin/mysqld_safe
+echo " -----  mysql restart  -----"
+sudo service mysql restart
 
 echo " -----  mysql  -----"
 mysql -uroot mysql;
