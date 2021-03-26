@@ -34,14 +34,18 @@ echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
 
 echo " -----  service mysql start  -----"
+service mysql status
 service mysql start;
 echo " -----  service cron start  -----"
 service cron start
 echo " -----  nginx  -----"
+service nginx status
 /usr/sbin/nginx -g "daemon off;"
 echo " -----  PHP-FPM  -----"
+service php$PHP_VER-fpm status
 /etc/init.d/php$PHP_VER-fpm start
 echo " -----  mysql restart  -----"
+service mysql status
 sudo service mysql restart
 
 echo " -----  tests/setup/dependency.sh  -----"
