@@ -19,14 +19,6 @@ ln -s /etc/php/$PHP_VER/mods-available/yetiforce.ini /etc/php/$PHP_VER/fpm/conf.
 
 crontab /etc/cron.d/yetiforcecrm
 
-echo " -----  LS  -----"
-ls -all $GITHUB_WORKSPACE/
-ls -all /var/www/html/
-
-
-rm /var/www/html/.user.ini
-rm /var/www/html/public_html/.user.ini
-
 echo " -----  chmod  -----"
 chmod -R +x /var/www/html/tests/setup
 
@@ -39,8 +31,8 @@ service mysql start;
 echo " -----  service cron start  -----"
 service cron start
 echo " -----  nginx  -----"
+service nginx start
 service nginx status
-/usr/sbin/nginx -g "daemon off;"
 echo " -----  PHP-FPM  -----"
 service php$PHP_VER-fpm status
 /etc/init.d/php$PHP_VER-fpm start
