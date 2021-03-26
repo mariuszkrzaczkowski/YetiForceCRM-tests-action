@@ -66,3 +66,10 @@ echo "FLUSH PRIVILEGES;" | mysql --user=root
 
 cd /var/www/html/tests
 /var/www/html/vendor/bin/phpunit --verbose --testsuite Init,Base,Integrations,Settings,Apps
+
+echo " -----  Logs: /var/log/fpm-php.www.log   -----"
+cat /var/log/fpm-php.www.log
+echo " -----  Logs: /var/log/php_error.log   -----"
+cat /var/log/php_error.log
+echo " -----  Logs: /var/log/mysql/error.log   -----"
+cat /var/log/mysql/error.log
