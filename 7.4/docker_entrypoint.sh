@@ -73,3 +73,5 @@ echo " -----  Logs: /var/log/php_error.log   -----"
 cat /var/log/php_error.log
 echo " -----  Logs: /var/log/mysql/error.log   -----"
 cat /var/log/mysql/error.log
+echo " -----  Logs: /var/www/html/cache/logs/system.log   -----"
+cat /var/www/html/cache/logs/system.log
