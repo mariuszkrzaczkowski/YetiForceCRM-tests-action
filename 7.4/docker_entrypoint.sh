@@ -26,19 +26,16 @@ echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
 
 echo " -----  service mysql start  -----"
-service mysql status
 service mysql start;
+service mysql status
 echo " -----  service cron start  -----"
 service cron start
 echo " -----  nginx  -----"
 service nginx start
 service nginx status
 echo " -----  PHP-FPM  -----"
-service php$PHP_VER-fpm status
 /etc/init.d/php$PHP_VER-fpm start
-echo " -----  mysql restart  -----"
-service mysql status
-sudo service mysql restart
+service php$PHP_VER-fpm status
 
 echo " -----  tests/setup/dependency.sh  -----"
 /var/www/html/tests/setup/dependency.sh
@@ -57,3 +54,6 @@ echo "CREATE DATABASE yetiforce;" | mysql --user=root;
 echo "CREATE USER 'yetiforce'@'localhost' IDENTIFIED BY '$DB_USER_PASS';" | mysql --user=root;
 echo "GRANT ALL PRIVILEGES ON yetiforce.* TO 'yetiforce'@'localhost';" | mysql --user=root;
 echo "FLUSH PRIVILEGES;" | mysql --user=root
+
+cd /var/www/html/tests
+/var/www/html/vendor/bin/phpunit --verbose --testsuite Init,Base,Integrations,Settings,Apps
