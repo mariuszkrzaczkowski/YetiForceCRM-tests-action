@@ -18,6 +18,12 @@ ln -s /etc/php/$PHP_VER/mods-available/yetiforce.ini /etc/php/$PHP_VER/cli/conf.
 ln -s /etc/php/$PHP_VER/mods-available/yetiforce.ini /etc/php/$PHP_VER/fpm/conf.d/30-yetiforce.ini
 
 crontab /etc/cron.d/yetiforcecrm
+
+echo " -----  LS  -----"
+ls -all $GITHUB_WORKSPACE/
+ls -all /var/www/html/
+
+
 rm /var/www/html/.user.ini
 rm /var/www/html/public_html/.user.ini
 
