@@ -1,5 +1,7 @@
 #!/bin/bash
 
+printenv
+
 cd $GITHUB_WORKSPACE
 
 cp -R $GITHUB_WORKSPACE/* /var/www/html
@@ -43,5 +45,3 @@ echo "CREATE DATABASE yetiforce;" | mysql --user=root;
 echo "CREATE USER 'yetiforce'@'localhost' IDENTIFIED BY '$DB_USER_PASS';" | mysql --user=root;
 echo "GRANT ALL PRIVILEGES ON yetiforce.* TO 'yetiforce'@'localhost';" | mysql --user=root;
 echo "FLUSH PRIVILEGES;" | mysql --user=root
-
-printenv
