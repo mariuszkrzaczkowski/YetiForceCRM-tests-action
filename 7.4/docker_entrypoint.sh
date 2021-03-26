@@ -24,12 +24,6 @@ rm /var/www/html/public_html/.user.ini
 echo " -----  chmod  -----"
 chmod -R +x /var/www/html/tests/setup
 
-echo " -----  tests/setup/dependency.sh  -----"
-/var/www/html/tests/setup/dependency.sh
-
-echo " -----  chown  -----"
-chown -R www-data:www-data /var/www/
-
 echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
 
@@ -43,6 +37,12 @@ echo " -----  PHP-FPM  -----"
 /etc/init.d/php$PHP_VER-fpm start
 echo " -----  mysql restart  -----"
 sudo service mysql restart
+
+echo " -----  tests/setup/dependency.sh  -----"
+/var/www/html/tests/setup/dependency.sh
+
+echo " -----  chown  -----"
+chown -R www-data:www-data /var/www/
 
 echo " -----  mysql  -----"
 mysql -uroot mysql;
