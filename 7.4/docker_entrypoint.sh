@@ -2,6 +2,8 @@
 echo " -----  Start -----"
 printenv
 
+#https://github.com/actions/cache/blob/main/examples.md#php---composer
+
 cd /var/www/html/
 
 echo " -----  Copy files  -----"
@@ -24,6 +26,13 @@ chmod -R +x /var/www/html/tests/setup
 
 echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
+
+echo " -----  config/Db.php  -----"
+cat /var/www/html/config/Db.php
+echo " -----  config/Main.php  -----"
+cat /var/www/html/config/Main.php
+echo " -----  config/Debug.php  -----"
+cat /var/www/html/config/Debug.php
 
 echo " -----  service mysql start  -----"
 service mysql start;
