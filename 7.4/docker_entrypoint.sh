@@ -1,9 +1,10 @@
 #!/bin/bash
-
+echo " -----  Start -----"
 printenv
 
 cd $GITHUB_WORKSPACE
 
+echo " -----  Copy files  -----"
 cp -R $GITHUB_WORKSPACE/* /var/www/html
 
 cp /var/www/html/tests/setup/crons.conf /etc/cron.d/yetiforcecrm
@@ -20,21 +21,31 @@ crontab /etc/cron.d/yetiforcecrm
 rm /var/www/html/.user.ini
 rm /var/www/html/public_html/.user.ini
 
+echo " -----  chmod  -----"
 chmod -R +x /var/www/html/tests/setup
 
+echo " -----  tests/setup/docker_entrypoint.sh  -----"
 /var/www/html/tests/setup/docker_entrypoint.sh
+
+echo " -----  tests/setup/dependency.sh  -----"
 /var/www/html/tests/setup/dependency.sh
 
+echo " -----  chown  -----"
 chown -R www-data:www-data /var/www/
+
+echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
 
+echo " -----  service mysql start  -----"
 service mysql start;
+echo " -----  service cron start  -----"
 service cron start
+echo " -----  nginx  -----"
 /usr/sbin/nginx -g "daemon off;" &
 /etc/init.d/php$PHP_VER-fpm start
 /usr/bin/mysqld_safe
 
-
+echo " -----  mysql  -----"
 mysql -uroot mysql;
 mysqladmin password "$DB_ROOT_PASS";
 echo "UPDATE mysql.user SET Password=PASSWORD('$DB_ROOT_PASS') WHERE User='root';" | mysql --user=root;
