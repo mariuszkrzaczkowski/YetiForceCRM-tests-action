@@ -4,13 +4,13 @@ branding:
   icon: 'check-square'
   color: 'blue'
 inputs:
-  php:
-    description: 'PHP version'
+  xxxx:
+    description: 'xxxx xxxx xxxx'
     required: true
-    default: '7.4'
+    default: 'cccc'
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.php }}
+    - ${{ inputs.xxxx }}
