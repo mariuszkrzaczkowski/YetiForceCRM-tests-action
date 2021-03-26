@@ -2,7 +2,7 @@
 echo " -----  Start -----"
 printenv
 
-cd $GITHUB_WORKSPACE
+cd /var/www/html/
 
 echo " -----  Copy files  -----"
 cp -R $GITHUB_WORKSPACE/* /var/www/html
