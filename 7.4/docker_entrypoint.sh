@@ -24,6 +24,9 @@ crontab /etc/cron.d/yetiforcecrm
 echo " -----  chmod  -----"
 chmod -R +x /var/www/html/tests/setup
 
+echo " -----  tests/setup/dependency.sh  -----"
+/var/www/html/tests/setup/dependency.sh
+
 echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
 
@@ -45,9 +48,6 @@ service nginx status
 echo " -----  PHP-FPM  -----"
 /etc/init.d/php$PHP_VER-fpm start
 service php$PHP_VER-fpm status
-
-echo " -----  tests/setup/dependency.sh  -----"
-/var/www/html/tests/setup/dependency.sh
 
 echo " ----- LS /var/www/html/vendor/  -----"
 ls -all /var/www/html/vendor/
