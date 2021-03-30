@@ -49,12 +49,6 @@ service php$PHP_VER-fpm status
 echo " -----  tests/setup/dependency.sh  -----"
 /var/www/html/tests/setup/dependency.sh
 
-echo " ----- LS /var/www/html/vendor/  -----"
-ls -all /var/www/html/vendor/
-
-echo " ----- LS $GITHUB_WORKSPACE/vendor/  -----"
-ls -all $GITHUB_WORKSPACE/vendor/
-
 echo " -----  chown  -----"
 chown -R www-data:www-data /var/www/
 

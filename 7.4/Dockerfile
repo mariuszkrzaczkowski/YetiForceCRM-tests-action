@@ -39,12 +39,11 @@ RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
 
-COPY docker_entrypoint.sh /docker_entrypoint.sh
-
-RUN chmod 777 /docker_entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod 777 /entrypoint.sh
 
 WORKDIR /var/www/html
 
 EXPOSE 80
 
-ENTRYPOINT [ "/docker_entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
