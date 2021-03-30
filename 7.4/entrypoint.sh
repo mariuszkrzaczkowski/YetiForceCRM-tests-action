@@ -24,15 +24,11 @@ crontab /etc/cron.d/yetiforcecrm
 echo " -----  chmod  -----"
 chmod -R +x /var/www/html/tests/setup
 
+echo " -----  tests/setup/dependency.sh  -----"
+/var/www/html/tests/setup/dependency.sh
+
 echo " -----  tests/setup/docker_post_install.php  -----"
 php /var/www/html/tests/setup/docker_post_install.php
-
-echo " -----  config/Db.php  -----"
-cat /var/www/html/config/Db.php
-echo " -----  config/Main.php  -----"
-cat /var/www/html/config/Main.php
-echo " -----  config/Debug.php  -----"
-cat /var/www/html/config/Debug.php
 
 echo " -----  service mysql start  -----"
 service mysql start;
@@ -45,9 +41,6 @@ service nginx status
 echo " -----  PHP-FPM  -----"
 /etc/init.d/php$PHP_VER-fpm start
 service php$PHP_VER-fpm status
-
-echo " -----  tests/setup/dependency.sh  -----"
-/var/www/html/tests/setup/dependency.sh
 
 echo " -----  chown  -----"
 chown -R www-data:www-data /var/www/
