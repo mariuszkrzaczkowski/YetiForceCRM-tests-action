@@ -1,5 +1,5 @@
-name: 'YetiForceCRM Tests Action'
-description: 'GitHub Action for Tests YetiForceCRM'
+name: 'YetiForceCRM Tests Action - PHP 7.4'
+description: 'GitHub Action for Tests YetiForceCRM  - PHP 7.4'
 branding:
   icon: 'check-square'
   color: 'blue'

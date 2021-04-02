@@ -57,8 +57,10 @@ echo "CREATE USER 'yetiforce'@'localhost' IDENTIFIED BY '$DB_USER_PASS';" | mysq
 echo "GRANT ALL PRIVILEGES ON yetiforce.* TO 'yetiforce'@'localhost';" | mysql --user=root;
 echo "FLUSH PRIVILEGES;" | mysql --user=root
 
+
 cd /var/www/html/tests
-/var/www/html/vendor/bin/phpunit --verbose --testsuite Init,Base,Integrations,Settings,Apps
+/var/www/html/vendor/bin/phpunit --verbose --testsuite Init,Base,Integrations,Settings,Apps --colors always
+
 
 echo " -----  Logs: /var/log/fpm-php.www.log   -----"
 cat /var/log/fpm-php.www.log
