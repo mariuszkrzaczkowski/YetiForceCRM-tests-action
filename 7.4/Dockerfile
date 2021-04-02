@@ -42,15 +42,6 @@ RUN chmod +x /usr/local/bin/composer
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
-
-RUN pwd
-
-RUN cd ..
-
-RUN pwd
-
-RUN ls -all
-
 WORKDIR /var/www/html
 
 EXPOSE 80
